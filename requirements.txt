@@ -1,0 +1,11 @@
+tensorflow-macos==2.16.2
+tensorflow-metal==1.2.0
+mtcnn==1.0.0
+fastapi[standard]
+dotenv==0.9.9
+pymilvus==2.5.15
+scipy==1.15.3
+opencv-python==4.11.0.86
+aiohttp==3.12.15
+pydantic-settings==2.10.1
+streamlit==1.49.1
