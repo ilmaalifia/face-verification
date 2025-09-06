@@ -1,3 +1,11 @@
+# Miscellaneous
+.DS_Store
+*.csv
+*.db
+*.db.lock
+*.pdf
+*.drawio
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
