@@ -126,5 +126,8 @@ class Milvus:
             results += result
         return results
 
+    def flush(self):
+        self.client.flush(self.collection_name)
+
 
 milvus = Milvus()

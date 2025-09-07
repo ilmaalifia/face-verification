@@ -1,7 +1,5 @@
 # Miscellaneous
 .DS_Store
-*.csv
-*.db
 *.db.lock
 *.pdf
 *.drawio

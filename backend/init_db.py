@@ -8,8 +8,8 @@ import pandas as pd
 from backend.dependencies.facenet import facenet_model
 from backend.dependencies.milvus import milvus
 
-sem = asyncio.Semaphore(20)
-queue = asyncio.Queue()
+sem = asyncio.Semaphore(10)
+queue = asyncio.Queue(maxsize=100)
 
 
 async def get_image(session, url, name, image_id, face_id):
@@ -53,6 +53,7 @@ def process_image(item):
 
 async def main(df):
     print(f"Total URLs: {len(df)}")
+    counter = 0
     async with aiohttp.ClientSession() as session:
         # Get image file
         producers = []
@@ -73,6 +74,9 @@ async def main(df):
                 except asyncio.TimeoutError:
                     continue
                 loop.run_in_executor(pool, process_image, item)
+                counter += 1
+                if counter % 100 == 0:
+                    milvus.flush()
 
         await producer_task
 

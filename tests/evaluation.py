@@ -28,6 +28,7 @@ for a, b in tqdm(
     total=len(validation_data) * (len(validation_data) - 1),
 ):
     # Ground Truth
+    # Assumption: Same name means same person in validation dataset
     same_person = int(a["name"].lower() == b["name"].lower())
     y_true.append(same_person)
 
