@@ -14,7 +14,6 @@ class Settings(BaseSettings):
     MILVUS_RADIUS: float = float(os.getenv("MILVUS_RADIUS", "1.0"))
     MILVUS_RANGE_FILTER: float = float(os.getenv("MILVUS_RANGE_FILTER", "0.0"))
     TOP_K: int = int(os.getenv("TOP_K", "7"))
-    LOCAL_IMG_DIR: str = "/img"
 
 
 settings = Settings()

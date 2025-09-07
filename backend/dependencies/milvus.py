@@ -110,5 +110,21 @@ class Milvus:
         )
         return results
 
+    def get_all_names(self):
+        iterator = self.client.query_iterator(
+            collection_name=self.collection_name,
+            batch_size=500,
+            output_fields=["name", "file_path", "embedding"],
+        )
+
+        results = []
+        while True:
+            result = iterator.next()
+            if not result:
+                iterator.close()
+                break
+            results += result
+        return results
+
 
 milvus = Milvus()
