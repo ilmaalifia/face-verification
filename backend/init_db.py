@@ -64,7 +64,7 @@ async def main(df):
 
         # Generate embeddings
         loop = asyncio.get_event_loop()
-        with ThreadPoolExecutor(max_workers=8) as pool:
+        with ThreadPoolExecutor(max_workers=6) as pool:
             while True:
                 if producer_task.done() and queue.empty():
                     break

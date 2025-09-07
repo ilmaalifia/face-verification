@@ -9,3 +9,4 @@ opencv-python==4.11.0.86
 aiohttp==3.12.15
 pydantic-settings==2.10.1
 streamlit==1.49.1
+keras-facenet==0.3.2

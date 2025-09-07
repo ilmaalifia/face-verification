@@ -1,6 +1,9 @@
 import tensorflow as tf
 from keras_facenet import FaceNet
 
+# Disable Mac GPU (MPS) if present due to TF1 and TF2 mismatch issues
+tf.config.set_visible_devices([], "GPU")
+
 
 class FaceNetModel:
     """
