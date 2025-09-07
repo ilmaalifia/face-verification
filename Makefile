@@ -1,9 +1,5 @@
 # Makefile
 
-# Default target
-.PHONY: all
-all: db eval backend frontend
-
 # Run initialization script for database
 .PHONY: db
 db:
@@ -23,3 +19,8 @@ frontend:
 .PHONY: eval
 eval:
 	python -m tests.evaluation
+
+# Run both backend and frontend in parallel
+.PHONY: dev
+dev:
+	@make -j 2 backend frontend
