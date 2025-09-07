@@ -2,7 +2,7 @@
 
 This project verifies whether a given image is a duplicate or belongs to the same person, based on precomputed face embeddings stored in the vector database. 
 - **Vector Database**: Stored locally at `data/milvus_demo.db` using Milvus Lite  
-- **Model**: FaceNet for embedding generation  
+- **Model**: FaceNet for embedding generation and Euclidean distance to measure similarity (smaller distance → higher similarity)
 - **Preprocessing**: MTCNN for detecting and cropping tight face regions
 
 ## 🖥️ Requirements
