@@ -10,3 +10,4 @@ aiohttp==3.12.15
 pydantic-settings==2.10.1
 streamlit==1.49.1
 keras-facenet==0.3.2
+scikit-metrics==0.1.0
