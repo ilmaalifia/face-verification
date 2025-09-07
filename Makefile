@@ -2,7 +2,7 @@
 
 # Default target
 .PHONY: all
-all: db backend frontend
+all: db eval backend frontend
 
 # Run initialization script for database
 .PHONY: db
@@ -18,3 +18,8 @@ backend:
 .PHONY: frontend
 frontend:
 	streamlit run frontend/app.py
+
+# Run ground truth evaluation
+.PHONY: eval
+eval:
+	python -m tests.evaluation

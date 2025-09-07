@@ -1,6 +1,6 @@
 from itertools import permutations
 
-from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from tqdm import tqdm
 
 from backend.dependencies.milvus import milvus
@@ -38,6 +38,7 @@ for a, b in tqdm(
 accuracy = accuracy_score(y_true, y_pred)
 precision = precision_score(y_true, y_pred, zero_division=0)
 recall = recall_score(y_true, y_pred, zero_division=0)
+f1 = f1_score(y_true, y_pred, zero_division=0)
 
 print("Evaluation Results")
 print("------------------")
@@ -47,3 +48,4 @@ print("------------------")
 print(f"Accuracy: {accuracy:.4f}")
 print(f"Precision: {precision:.4f}")
 print(f"Recall: {recall:.4f}")
+print(f"F1-score: {f1:.4f}")
