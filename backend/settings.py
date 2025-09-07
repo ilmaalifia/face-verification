@@ -7,11 +7,8 @@ from pydantic_settings import BaseSettings
 load_dotenv()
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Due to TF1 and TF2 mismatch
-
-
 class Settings(BaseSettings):
-    MILVUS_URI: str = os.getenv("MILVUS_URI", "./milvus_demo.db")
+    MILVUS_URI: str = os.getenv("MILVUS_URI", "data/milvus_demo.db")
     MILVUS_TOKEN: Optional[str] = os.getenv("MILVUS_TOKEN")
     MILVUS_COLLECTION: str = os.getenv("MILVUS_COLLECTION", "face_embeddings")
     MILVUS_RADIUS: float = float(os.getenv("MILVUS_RADIUS", "1.0"))
