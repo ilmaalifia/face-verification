@@ -9,8 +9,6 @@ import os
 
 st.title("Face Verification App")
 
-name = st.text_input("Hi, what's your name?")
-
 option = st.segmented_control(
     "Do you want to take a selfie or upload a selfie?",
     ("Take a Selfie", "Upload a Selfie"),
@@ -23,9 +21,9 @@ embedding = None
 if option == "Take a Selfie":
     img_file_buffer = st.camera_input("")
 else:
-    img_file_buffer = st.file_uploader("", type=["jpg", "jpeg", "png"])
+    img_file_buffer = st.file_uploader("", type=["jpg", "jpeg", "png", "bmp", "gif"])
     if img_file_buffer:
-        st.image(img_file_buffer)
+        st.image(img_file_buffer, width=160)
 
 if img_file_buffer:
     if st.button("Verify"):
@@ -46,14 +44,18 @@ if img_file_buffer:
                         for res in resp.get("results", []):
                             col1, col2 = st.columns([1, 3])
                             with col1:
-                                st.image(res["entity"]["file_path"], width=120)
+                                st.image(res["entity"]["file_path"], width=160)
                             with col2:
                                 st.subheader(res["entity"]["name"])
                                 st.caption(f"ID: {res['id']}")
+                                st.caption(f"File Path: {res['entity']['file_path']}")
                                 st.write(f"Distance: {res['distance']:.4f}")
                     else:
                         st.info("No duplicate image found in the database.")
                         embedding = resp.get("embedding", [])
+                    st.caption(
+                        f"Processing time: {float(response.headers.get('X-Process-Time')):.4f} seconds"
+                    )
             else:
                 st.error(
                     f"Failed to verify image. Status code: {response.status_code}."
